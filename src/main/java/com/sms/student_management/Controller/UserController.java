@@ -47,11 +47,29 @@ public class UserController {
 
         return userService.updateUser(id, user);
     }
+
 // get all users
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
+    // delete user
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "User deleted successfully";
+    }
+
+    // path: /api/users
+    @PatchMapping("/{id}")
+    public User patchUser(
+        @PathVariable Long id,
+        @RequestBody User user) {
+
+    return userService.patchUser(id, user);
+}
+
 
 
 //  @PostMapping

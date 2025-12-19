@@ -27,7 +27,7 @@ public class UserService {
 
         User user = new User();
         user.setEmail(email);
-        user.setPasswordHash(password);   // ❌ NO hashing (plain text)
+        user.setPasswordHash(password);   
         user.setRole(role);
 
         return userRepository.save(user);
@@ -65,5 +65,31 @@ public class UserService {
         }
 
         userRepository.deleteById(id);
+    }
+    //Patch user
+    public User patchUser(Long id, User updatedFields) {
+
+    User existingUser = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    if (updatedFields.getEmail() != null) {
+        existingUser.setEmail(updatedFields.getEmail());
+    }
+
+    if (updatedFields.getPasswordHash() != null) {
+        existingUser.setPasswordHash(updatedFields.getPasswordHash());
+    }
+
+    if (updatedFields.getRole() != null) {
+        existingUser.setRole(updatedFields.getRole());
+    }
+
+    return userRepository.save(existingUser);
+}
+
+
+    // find by id
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 }

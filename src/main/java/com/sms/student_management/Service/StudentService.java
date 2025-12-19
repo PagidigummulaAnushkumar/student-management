@@ -37,4 +37,19 @@ public class StudentService {
 
         return studentRepository.save(student);
     }
+
+    public Student getStudentById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getStudentById'");
+    }
+
+    public Student updateStudent(Long id, String email, String password, String studentNumber) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateStudent'");
+    }
+
+    public Iterable<Student> getAllStudents() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllStudents'");
+    }
 }
