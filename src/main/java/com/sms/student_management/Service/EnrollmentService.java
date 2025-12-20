@@ -16,22 +16,23 @@ public class EnrollmentService {
         this.enrollmentRepository = enrollmentRepository;
     }
 
-    public Enrollment enrollStudent(Student student, ClassSection section) {
+   public Enrollment enrollStudent(Student student, ClassSection section) {
 
-        boolean exists = enrollmentRepository
-                .existsByStudentIdAndClassSectionId(
-                        student.getId(),
-                        section.getId()
-                );
+    boolean exists = enrollmentRepository
+            .existsByStudent_IdAndClassSection_Id(
+                    student.getId(),
+                    section.getId()
+            );
 
-        if (exists) {
-            throw new RuntimeException("Student already enrolled");
-        }
-
-        Enrollment enrollment = new Enrollment();
-        enrollment.setStudent(student);
-        enrollment.setClassSection(section);
-
-        return enrollmentRepository.save(enrollment);
+    if (exists) {
+        throw new RuntimeException("Student already enrolled");
     }
+
+    Enrollment enrollment = new Enrollment();
+    enrollment.setStudent(student);
+    enrollment.setClassSection(section);
+
+    return enrollmentRepository.save(enrollment);
+}
+
 }

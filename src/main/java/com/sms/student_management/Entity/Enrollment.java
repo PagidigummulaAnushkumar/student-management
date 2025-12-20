@@ -9,7 +9,7 @@ public class Enrollment {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
@@ -20,10 +20,10 @@ public class Enrollment {
     private ClassSection classSection;
 
     // getters & setters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }       
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public Student getStudent() {
