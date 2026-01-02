@@ -2,7 +2,7 @@ package com.sms.student_management.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+// import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "students")
@@ -25,7 +25,7 @@ public class Student {
     private LocalDate dateOfBirth;
 
     @Column(name = "enrollment_date")
-    private LocalDateTime enrollmentDate = LocalDateTime.now();
+    private LocalDate enrollmentDate = LocalDate.now();
 
 
     // Getters & Setters
@@ -59,10 +59,10 @@ public class Student {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    public LocalDateTime getEnrollmentDate() {
+    public LocalDate getEnrollmentDate() {
         return enrollmentDate;
     }
-   public void setEnrollmentDate(LocalDateTime enrollmentDate) {
+   public void setEnrollmentDate(LocalDate enrollmentDate) {
     this.enrollmentDate = enrollmentDate;
     }
    

@@ -9,7 +9,7 @@ public class Assessment {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     private String title;
 
@@ -19,11 +19,11 @@ public class Assessment {
     private int maxMarks;
 
     // getters & setters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }                   
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getTitle() {

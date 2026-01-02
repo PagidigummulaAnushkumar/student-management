@@ -10,7 +10,7 @@ public class AttendanceRecord {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @ManyToOne
     private AttendanceSession session;
@@ -21,11 +21,11 @@ public class AttendanceRecord {
     private boolean present;
 
     // getters & setters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public AttendanceSession getSession() {

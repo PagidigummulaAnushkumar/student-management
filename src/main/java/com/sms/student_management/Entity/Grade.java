@@ -9,7 +9,7 @@ public class Grade {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @ManyToOne
     private Assessment assessment;
@@ -20,10 +20,10 @@ public class Grade {
     private int marks;
 
     // getters & setters    
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public Assessment getAssessment() {

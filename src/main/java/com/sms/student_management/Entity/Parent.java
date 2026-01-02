@@ -9,7 +9,7 @@ public class Parent {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -17,10 +17,10 @@ public class Parent {
 
     // getters & setters
    
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public User getUser() {

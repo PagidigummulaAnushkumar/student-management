@@ -42,7 +42,7 @@ public class StudentService {
     student.setDateOfBirth(dateOfBirth);
 
     // 3️⃣ Set system-managed fields
-    student.setEnrollmentDate(LocalDateTime.now());
+    student.setEnrollmentDate(LocalDate.now());
 
 
     // 4️⃣ Save to DB
