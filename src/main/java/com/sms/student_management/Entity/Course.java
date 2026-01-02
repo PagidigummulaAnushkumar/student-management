@@ -9,7 +9,7 @@ public class Course {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -19,10 +19,10 @@ public class Course {
 
     // getters & setters
    
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getName() {

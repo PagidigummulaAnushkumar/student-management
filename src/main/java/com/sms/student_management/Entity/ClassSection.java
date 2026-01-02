@@ -10,7 +10,7 @@ public class ClassSection {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
@@ -23,10 +23,10 @@ public class ClassSection {
     private String sectionName;
 
     // getters & setters
-    public UUID getId() {
+    public Long getId() {
         return id;
     }       
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public Course getCourse() {
@@ -38,8 +38,8 @@ public class ClassSection {
     public Teacher getTeacher() {
         return teacher;
     }
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setTeacher(Teacher teacherId) {
+        this.teacher = teacherId;
     }
     public String getSectionName() {
         return sectionName;

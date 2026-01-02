@@ -1,9 +1,9 @@
-package com.sms.student_management.Controller;
+package com.sms.student_management.Controller; // Use your actual package
 
-//import com.sms.student_management.Controller.*;
-import com.sms.student_management.Entity.*;
-import com.sms.student_management.Service.*;
+import com.sms.student_management.Entity.Course;
+import com.sms.student_management.Service.CourseService;
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/courses")
@@ -16,10 +16,38 @@ public class CourseController {
     }
 
     @PostMapping
-    public Course createCourse(
-            @RequestParam String name,
-            @RequestParam String code) {
+    // Change RequestParam to RequestBody Map
+    public Course createCourse(@RequestBody Map<String, String> payload) {
+        
+        String name = payload.get("name");
+        String code = payload.get("code");
 
         return courseService.createCourse(name, code);
     }
+    
+  
+    @GetMapping("/{id}")
+    public Course getCourseById(@PathVariable Long id) {
+        return courseService.getCourseById(id);
+    }
+
+    // get all courses
+    @GetMapping
+    public Iterable<Course> getAllCourses() {
+        return courseService.getAllCourses();
+    }
+    
+    @PutMapping("/{id}")
+    public Course updateCourse(@PathVariable Long id, @RequestBody Map<String, String>
+    payload) {
+            
+            String name = payload.get("name");
+            String code = payload.get("code");
+    
+            return courseService.updateCourse(id, name, code);
+        }
+    @DeleteMapping("/{id}")
+    public void deleteCourse(@PathVariable Long id) {
+        courseService.deleteCourse(id);
+    }       
 }
