@@ -7,6 +7,8 @@ import com.sms.student_management.Entity.*;
 import com.sms.student_management.Repository.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 // @Service
 // public class ClassSectionService {
 
@@ -68,6 +70,12 @@ public class ClassSectionService {
     public Iterable<ClassSection> getAllClassSections() {
         return classSectionRepository.findAll();
     }
+
+    // Get class sections by teacher ID
+    public List<ClassSection> getClassSectionsByTeacherId(Long teacherId) {
+        return classSectionRepository.findByTeacherId(teacherId);
+    }
+
     public ClassSection getClassSectionById(Long id) {
         return classSectionRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("ClassSection not found with ID: " + id));

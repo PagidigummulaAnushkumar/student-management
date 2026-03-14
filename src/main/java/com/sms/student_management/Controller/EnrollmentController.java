@@ -3,6 +3,7 @@ package com.sms.student_management.Controller;
 import com.sms.student_management.Entity.*;
 import com.sms.student_management.Service.EnrollmentService;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,13 @@ public class EnrollmentController {
     public Iterable<Enrollment> getAllEnrollments() {
         return enrollmentService.getAllEnrollments();
     }
+
+    // Get enrollments by student ID
+    @GetMapping("/student/{studentId}")
+    public List<Enrollment> getEnrollmentsByStudentId(@PathVariable Long studentId) {
+        return enrollmentService.getEnrollmentsByStudentId(studentId);
+    }
+
     // get enrollment by id
     @GetMapping("/{id}")    
     public Enrollment getEnrollmentById(@PathVariable Long id) {

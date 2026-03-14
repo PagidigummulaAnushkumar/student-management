@@ -76,7 +76,9 @@ package com.sms.student_management.Service;
 import com.sms.student_management.Entity.*;
 import com.sms.student_management.Repository.*;
 import org.springframework.stereotype.Service;
-import jakarta.persistence.EntityNotFoundException; // Import this
+import jakarta.persistence.EntityNotFoundException;
+
+import java.util.List;
 
 @Service
 public class EnrollmentService {
@@ -113,7 +115,11 @@ public class EnrollmentService {
         return enrollmentRepository.save(enrollment);
     }
 
-    // ... your other methods (getAll, getById, etc.)
+    // Get enrollments by student ID
+    public List<Enrollment> getEnrollmentsByStudentId(Long studentId) {
+        return enrollmentRepository.findByStudentId(studentId);
+    }
+
     // getAllEnrollments
     public Iterable<Enrollment> getAllEnrollments() {
         return enrollmentRepository.findAll();
