@@ -88,7 +88,7 @@ public class ParentController {
             @RequestBody Map<String, Object> payload) {
 
         if (payload.get("classSectionId") == null) {
-            throw new RuntimeException("Error: 'classSectionId' is required.");
+            throw new IllegalArgumentException("Error: 'classSectionId' is required.");
         }
 
         Long classSectionId = Long.valueOf(payload.get("classSectionId").toString());

@@ -86,7 +86,7 @@ public class ParentService {
                 .orElseThrow(() -> new EntityNotFoundException("Student not found with ID: " + studentId));
 
         if (parent.getStudents().contains(student)) {
-            throw new RuntimeException("Student is already linked to this parent.");
+            throw new IllegalStateException("Student is already linked to this parent.");
         }
 
         parent.getStudents().add(student);
@@ -100,7 +100,7 @@ public class ParentService {
                 .orElseThrow(() -> new EntityNotFoundException("Student not found with ID: " + studentId));
 
         if (!parent.getStudents().remove(student)) {
-            throw new RuntimeException("Student is not linked to this parent.");
+            throw new IllegalStateException("Student is not linked to this parent.");
         }
 
         return parentRepository.save(parent);
@@ -114,7 +114,7 @@ public class ParentService {
         boolean isChild = parent.getStudents().stream()
                 .anyMatch(s -> s.getId().equals(studentId));
         if (!isChild) {
-            throw new RuntimeException("Student with ID " + studentId + " is not a child of parent with ID " + parentId);
+            throw new IllegalArgumentException("Student with ID " + studentId + " is not a child of parent with ID " + parentId);
         }
 
         Student student = studentRepository.findById(studentId)
@@ -123,7 +123,7 @@ public class ParentService {
                 .orElseThrow(() -> new EntityNotFoundException("ClassSection not found with ID: " + classSectionId));
 
         if (enrollmentRepository.existsByStudent_IdAndClassSection_Id(studentId, classSectionId)) {
-            throw new RuntimeException("Student is already enrolled in this class section.");
+            throw new IllegalStateException("Student is already enrolled in this class section.");
         }
 
         Enrollment enrollment = new Enrollment();

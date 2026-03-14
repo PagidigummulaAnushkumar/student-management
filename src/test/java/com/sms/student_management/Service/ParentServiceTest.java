@@ -126,7 +126,7 @@ class ParentServiceTest {
         when(parentRepository.findById(1L)).thenReturn(Optional.of(parent));
         when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 
-        assertThrows(RuntimeException.class, () -> parentService.addChild(1L, 1L));
+        assertThrows(IllegalStateException.class, () -> parentService.addChild(1L, 1L));
     }
 
     @Test
@@ -154,7 +154,7 @@ class ParentServiceTest {
         when(parentRepository.findById(1L)).thenReturn(Optional.of(parent));
         when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
 
-        assertThrows(RuntimeException.class, () -> parentService.removeChild(1L, 1L));
+        assertThrows(IllegalStateException.class, () -> parentService.removeChild(1L, 1L));
     }
 
     @Test
@@ -183,7 +183,7 @@ class ParentServiceTest {
         // parent has no children linked
         when(parentRepository.findById(1L)).thenReturn(Optional.of(parent));
 
-        assertThrows(RuntimeException.class, () -> parentService.enrollChild(1L, 1L, 1L, "ACTIVE"));
+        assertThrows(IllegalArgumentException.class, () -> parentService.enrollChild(1L, 1L, 1L, "ACTIVE"));
     }
 
     @Test
@@ -194,7 +194,7 @@ class ParentServiceTest {
         when(classSectionRepository.findById(1L)).thenReturn(Optional.of(classSection));
         when(enrollmentRepository.existsByStudent_IdAndClassSection_Id(1L, 1L)).thenReturn(true);
 
-        assertThrows(RuntimeException.class, () -> parentService.enrollChild(1L, 1L, 1L, "ACTIVE"));
+        assertThrows(IllegalStateException.class, () -> parentService.enrollChild(1L, 1L, 1L, "ACTIVE"));
     }
 
     @Test
