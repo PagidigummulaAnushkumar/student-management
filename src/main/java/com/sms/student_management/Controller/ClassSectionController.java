@@ -50,6 +50,12 @@ public ClassSection createSection(@RequestBody Map<String, Object> payload) {
         return classSectionService.getAllClassSections();
     }
 
+    // get class sections by teacher ID
+    @GetMapping("/teacher/{teacherId}")
+    public java.util.List<ClassSection> getClassSectionsByTeacherId(@PathVariable Long teacherId) {
+        return classSectionService.getClassSectionsByTeacherId(teacherId);
+    }
+
     @GetMapping("/{id}")
     public ClassSection getClassSectionById(@PathVariable Long id) {
         return classSectionService.getClassSectionById(id);

@@ -1,8 +1,10 @@
 package com.sms.student_management.Entity;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDate;
-// import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -27,6 +29,9 @@ public class Student {
     @Column(name = "enrollment_date")
     private LocalDate enrollmentDate = LocalDate.now();
 
+    @ManyToMany(mappedBy = "students")
+    @JsonIgnoreProperties("students")
+    private List<Parent> parents = new ArrayList<>();
 
     // Getters & Setters
     public Long getId() {
@@ -64,6 +69,12 @@ public class Student {
     }
    public void setEnrollmentDate(LocalDate enrollmentDate) {
     this.enrollmentDate = enrollmentDate;
+    }
+    public List<Parent> getParents() {
+        return parents;
+    }
+    public void setParents(List<Parent> parents) {
+        this.parents = parents;
     }
    
 }
